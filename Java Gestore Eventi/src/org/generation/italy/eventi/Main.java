@@ -1,7 +1,9 @@
 package org.generation.italy.eventi;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalTime;
+//import java.util.List; -> active for MILESTONE3
 //import java.util.Scanner; -> active for MILESTONE2
 
 public class Main {
@@ -99,39 +101,70 @@ public class Main {
 //		
 //		sc.close();
 		
-//		MILESTONE3
-		Event event1 = null;
-		Event event2 = null;
-		Event event3 = null;
-		Event event4 = null;
-		Event event5 = null;
 		
+//		MILESTONE3
+//		
+//		Event event1 = null;
+//		Event event2 = null;
+//		Event event3 = null;
+//		Event event4 = null;
+//		Event event5 = null;
+//		
+//		try {
+//			event1 = new Event("Sagra", LocalDate.parse("2023-06-23"), 50 );
+//			event2 = new Event("Fiera", LocalDate.parse("2023-11-11"), 70 );
+//			event3 = new Event("Cinema", LocalDate.parse("2023-05-15"), 100 );
+//			event4 = new Event("Concerto", LocalDate.parse("2023-04-02"), 200 );
+//			event5 = new Event("Mondiali", LocalDate.parse("2023-11-11"), 5000 );
+//		} catch (Exception e) {
+//			System.err.println(e.getMessage());
+//		}
+//		
+//		ProgrammEvents pe = new ProgrammEvents("TOP EVENTS");
+//		pe.addEvent(event1);
+//		pe.addEvent(event2);
+//		pe.addEvent(event3);
+//		pe.addEvent(event4);
+//		pe.addEvent(event5);
+//		System.out.println(pe);
+//		
+//		List<Event> eventOf11November = pe.getEventsByDate(LocalDate.parse("2023-11-11"));
+//		
+//		System.out.println("Events scheduled for November 11th: " + eventOf11November);
+//		
+//		System.out.println("Number of events in the program: " + pe.getNumberEvents());
+//		
+//		pe.clearEvents();
+//		System.out.println("Number of events present in the program after clear: " + pe.getNumberEvents());
+		
+		
+//		MILESTONE4
+		Concert concert = null;
 		try {
-			event1 = new Event("Sagra", LocalDate.parse("2023-06-23"), 50 );
-			event2 = new Event("Fiera", LocalDate.parse("2023-11-11"), 70 );
-			event3 = new Event("Cinema", LocalDate.parse("2023-05-15"), 100 );
-			event4 = new Event("Concerto", LocalDate.parse("2023-04-02"), 200 );
-			event5 = new Event("Mondiali", LocalDate.parse("2023-11-11"), 5000 );
+			concert = new Concert("Gigi D'Alessio", LocalDate.parse("2023-06-07"), 400, LocalTime.parse("20:00"), BigDecimal.valueOf(39.90));
+			
+			// reserve 250 seats on 400
+			for(int i = 0; i < 250; i++ ) {
+				concert.reserve();				
+			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
 		
-		ProgrammEvents pe = new ProgrammEvents("TOP EVENTS");
-		pe.addEvent(event1);
-		pe.addEvent(event2);
-		pe.addEvent(event3);
-		pe.addEvent(event4);
-		pe.addEvent(event5);
-		System.out.println(pe);
+		System.out.println(concert);
+		System.out.println("\nAvailable seat: " + concert.getAvailableSeat());
 		
-		List<Event> eventOf11November = pe.getEventsByDate(LocalDate.parse("2023-11-11"));
+		try {
+			// cancel 20 seats
+			for(int i = 0; i < 20; i++ ) {
+				concert.cancel();				
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 		
-		System.out.println("Events scheduled for November 11th: " + eventOf11November);
+		System.out.println("\nAvailable seat: " + concert.getAvailableSeat());
 		
-		System.out.println("Number of events in the program: " + pe.getNumberEvents());
-		
-		pe.clearEvents();
-		System.out.println("Number of events present in the program after clear: " + pe.getNumberEvents());
 	}
 
 }
