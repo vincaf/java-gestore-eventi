@@ -66,5 +66,9 @@ public class Event {
 	private String getFormattedDate() {
 		return date.getDayOfMonth() + "/" + date.getMonthValue() + "/" + date.getYear();
 	}
-
+	
+	@Override
+	public String toString() {
+		return getFormattedDate() + " - " + getTitle();
+	}
 }
