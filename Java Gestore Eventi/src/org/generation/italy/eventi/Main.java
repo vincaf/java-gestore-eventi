@@ -33,6 +33,49 @@ public class Main {
 		} finally {
 			System.out.println(event1 == null ? "The event could not be created" : event1);
 		}
+		
+		System.out.println("\n--------------------\n");
+		
+		
+		System.out.println("Choose an option to perform the operation" 
+			+ "\n1 - reserve"
+			+ "\n2 - cancel");
+		
+		String userChoice = sc.next();
+		
+		if (userChoice.equals("1")) {
+			System.out.println("How many reservations do you want to make? ");
+			int numberReservation = sc.nextInt();
+
+			for (int i = 0; i < numberReservation; i++) {
+				try {
+					event1.reserve();
+				} catch (Exception e) {
+					System.err.println(e.getMessage());;
+				}
+			}
+
+			System.out.println("Reserved seats: " + event1.getReservedSeatNumber() 
+								+ "\nAvailable seats: " + (event1.getTotalSeatNumber() - event1.getReservedSeatNumber()));
+		}
+		
+		if(userChoice.equals("2")) {
+			System.out.println("How many cancellations do you want to make? ");
+			int numberCancellation = sc.nextInt();
+
+			for (int i = 0; i < numberCancellation; i++) {
+				try {
+					event1.cancel();
+				} catch (Exception e) {
+					System.err.println(e.getMessage());;
+				}
+			}
+
+			System.out.println("Reserved seats: " + event1.getReservedSeatNumber() 
+								+ "\nAvailable seats: " + (event1.getTotalSeatNumber() - event1.getReservedSeatNumber()));
+		}
+		
+		sc.close();
 	}
 
 }
