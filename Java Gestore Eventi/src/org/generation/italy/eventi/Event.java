@@ -62,4 +62,9 @@ public class Event {
 		}
 		reservedSeatNumber--;
 	}
+	
+	private String getFormattedDate() {
+		return date.getDayOfMonth() + "/" + date.getMonthValue() + "/" + date.getYear();
+	}
+
 }
