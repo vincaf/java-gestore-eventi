@@ -34,7 +34,10 @@ public class Event {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(LocalDate date) throws Exception {
+		if(date.isBefore(LocalDate.now())) {
+			throw new Exception("The entered date cannot be earlier than the current one.");
+		}
 		this.date = date;
 	}
 
