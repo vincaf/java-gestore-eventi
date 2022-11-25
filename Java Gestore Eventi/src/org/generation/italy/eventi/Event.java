@@ -49,4 +49,17 @@ public class Event {
 		return reservedSeatNumber;
 	}
 	
+	public void reserve() throws Exception {
+		if(reservedSeatNumber == totalSeatNumber || date.isBefore(LocalDate.now())) {
+			throw new Exception("It's no longer possible to participate in this event.");
+		}
+		reservedSeatNumber++;
+	}
+	
+	public void cancel() throws Exception{
+		if(reservedSeatNumber == 0 || date.isBefore(LocalDate.now())) {
+			throw new Exception("It's no longer possible to cancel the reservation for this event.");
+		}
+		reservedSeatNumber--;
+	}
 }
