@@ -39,7 +39,8 @@ public class Main {
 		
 		System.out.println("Choose an option to perform the operation" 
 			+ "\n1 - reserve"
-			+ "\n2 - cancel");
+			+ "\n2 - cancel"
+			+ "\n3 - exit");
 		
 		String userChoice = sc.next();
 		
@@ -55,7 +56,8 @@ public class Main {
 				}
 			}
 
-			System.out.println("Reserved seats: " + event1.getReservedSeatNumber() 
+			System.out.println( "\nEvent title: " + event1.getTitle()
+								+"\nReserved seats: " + event1.getReservedSeatNumber() 
 								+ "\nAvailable seats: " + (event1.getTotalSeatNumber() - event1.getReservedSeatNumber()));
 		}
 		
@@ -71,7 +73,16 @@ public class Main {
 				}
 			}
 
-			System.out.println("Reserved seats: " + event1.getReservedSeatNumber() 
+			System.out.println("\nEvent title: " + event1.getTitle()
+								+"\nReserved seats: " + event1.getReservedSeatNumber() 
+								+ "\nAvailable seats: " + (event1.getTotalSeatNumber() - event1.getReservedSeatNumber()));
+		}
+		
+		if (!userChoice.equals("si") && !userChoice.equals("no") || userChoice.equals("3")) {
+			System.out.println("\nYou have exited from the system, here are the results");
+			
+			System.out.println("\nEvent title: " + event1.getTitle()
+								+"\nReserved seats: " + event1.getReservedSeatNumber() 
 								+ "\nAvailable seats: " + (event1.getTotalSeatNumber() - event1.getReservedSeatNumber()));
 		}
 		
