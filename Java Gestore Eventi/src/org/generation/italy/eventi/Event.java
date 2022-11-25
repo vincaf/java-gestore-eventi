@@ -49,6 +49,10 @@ public class Event {
 		return reservedSeatNumber;
 	}
 	
+	public int getAvailableSeat() {
+		return getTotalSeatNumber() - getReservedSeatNumber();
+	}
+	
 	public void reserve() throws Exception {
 		if(reservedSeatNumber == totalSeatNumber || date.isBefore(LocalDate.now())) {
 			throw new Exception("It's no longer possible to participate in this event.");
